@@ -1,0 +1,48 @@
+﻿@model SingerTbl
+<form method="post" enctype="multipart/form-data">
+<div class="row">
+        <div class="border p-3 mt-4 col-10" >
+            <div class="row pb-2">
+                <h2 class=" text-primary">Delete Singer</h2>
+                <hr />
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SingerId" hidden />
+                <label asp-for="SingerName" class="p-0"></label>
+                <input asp-for="SingerName" class="form-control" disabled />
+
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SingerId" hidden />
+                <label asp-for="SingerBio" class="p-0"></label>
+                <input asp-for="SingerBio" class="form-control" disabled />
+
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SingerId" hidden />
+                <label asp-for="ProfilePicture" class="p-0"></label>
+                <input asp-for="ProfilePicture" class="form-control" disabled />
+
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">Delete</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Singer" asp-action="Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    
+    <div class="col-2">
+            
+                <img src="@Model.ProfilePicture" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+       
+    </div>
+
+</div>
+   
+</form>
+

@@ -1,0 +1,85 @@
+﻿@model List<SongTbl>
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="song-container">
+    <div class="row pt-4 pb-3  mb-5">
+        <div class="col-6">
+            <h2 class="text-primary">Song List</h2>
+        </div>
+        <div class="col-6  text-end ">
+            <a asp-controller="Song" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>  Add New Song
+            </a>
+        </div>
+        <div class="row">
+            <table class="table table-borderless table-responsive table-striped display " id="myTable">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Song Name</th>
+                        <th>Description</th>
+                        <th>Release Date</th>
+                        <th>Genre</th>
+                        <th>Album</th>
+                        <th>Singer</th>
+                        <th>Language</th>
+                        <th>File</th>
+                        <th></th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <img src="@item.SongPicture" style="width:100px" height="100" />
+                            </td>
+                            <td>@item.SongName</td>
+                            <td>@item.SongDescription</td>
+                            <td>@item.SongRelease</td>
+                            <td>@item.Genre.GenreName</td>
+                            <td>@item.Album.AlbumTitle</td>
+                            <td>@item.Singer.SingerName</td>
+                            <td>@item.Language.LanguageName</td>
+                           <td>
+               <audio controls>
+               <source src="@item.SongFilepath" type="audio/mp3">
+                                Your browser does not support the audio element.
+                 </audio>
+                               
+                            </td>
+                            <td>
+                                <div class="btn btn-group float-end" role="group">
+                                    <a asp-controller="Song" asp-action="Edit" asp-route-id="@item.SongId" class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                                    <a asp-controller="Song" asp-action="Delete" asp-route-id="@item.SongId" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="DataTables/datatables.min.css" />
+<script src="DataTables/datatables.min.js"></script>
+    <script type="text/javascript">
+        var js = jQuery.noConflict(true);
+        js(document).ready(function () {
+
+            js('#myTable').DataTable();
+            js("audio").on("play", function () {
+                js("audio").not(this).each(function (index, audio) {
+                    audio.pause();
+                })
+            })
+
+        })
+</script>

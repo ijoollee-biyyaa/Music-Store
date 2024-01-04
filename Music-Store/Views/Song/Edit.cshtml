@@ -1,0 +1,102 @@
+﻿@model SongTbl
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+ 
+    <div class="row">
+    <div class="border p-3 mt-4 mb-5 col-10">
+        <div class="row pb-2">
+            <h2 class=" text-primary">Update Song</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <input asp-for="SongId" hidden />
+            <label asp-for="SongName" class="p-0"></label>
+            <input asp-for="SongName" class="form-control" />
+            <span asp-validation-for="SongName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 row p-1">
+            <input asp-for="SongId" hidden />
+            <label asp-for="SongDescription" class="p-0"></label>
+            <input asp-for="SongDescription" class="form-control" />
+            <span asp-validation-for="SongDescription" class="text-danger"></span>
+        </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongRelease" class="p-0"></label>
+                <input asp-for="SongRelease" class="form-control" />
+                <span asp-validation-for="SongRelease" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="GenreId" class="p-0"></label>
+                <select asp-items="ViewBag.GenreList" asp-for="GenreId" class="form-select">
+                    <option  selected> @Model.Genre.GenreName</option>
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="AlbumId" class="p-0"></label>
+                <select asp-items="ViewBag.AlbumList" asp-for="AlbumId"  class="form-select">
+                    <option disabled selected>--@Model.Album.AlbumTitle-- </option>
+                </select>
+                <span asp-validation-for="AlbumId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 row p-1">
+                   <input asp-for="SongId" hidden />
+                <label asp-for="SingerId" class="p-0"></label>
+                <select asp-for="SingerId" asp-items="ViewBag.SingerList" class="form-select">
+                    <option disabled  selected>--@Model.Singer.SingerName--</option>
+                </select>
+                <span asp-validation-for="SingerId" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="LanguageId" class="p-0"></label>
+                <Select asp-for="LanguageId" asp-items="ViewBag.LanguageList" class="form-select">
+                    <option disabled selected>--@Model.Language.LanguageName--</option>
+
+                </Select>
+                <span asp-validation-for="LanguageId" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongFilepath" class="p-0"></label>
+                <input type="file" name="file1"  accept="audio/mp3" />
+                <span asp-validation-for="SongFilepath" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongPicture" class="p-0"></label>
+                <input type="file" name="file" accept="image/*" />
+                <span asp-validation-for="SongPicture" class="text-danger "></span>
+            </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Update</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <img src="@Model.SongPicture" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+        <audio controls >
+                <source src="@Model.SongFilepath" type="audio/mp3">
+        </audio>
+    </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,30 @@
+﻿@model GenreTbl
+<form method="post">
+   @*  <input asp-for="GenreId" hidden/> *@
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class=" text-primary">Create Genre</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="GenreName" class="p-0"></label>
+            <input asp-for="GenreName" class="form-control" />
+            <span asp-validation-for="GenreName" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-success form-control">Create</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Genre" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

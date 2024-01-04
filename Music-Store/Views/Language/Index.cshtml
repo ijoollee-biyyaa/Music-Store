@@ -1,0 +1,43 @@
+﻿@model List<LanguageTbl>
+
+<div class="container">
+    <div class="row pt-4 pb-3 offset-md-1">
+        <div class="col-6">
+            <h2 class="text-primary">Language List</h2>
+        </div>
+        <div class="col-6  text-end ">
+            <a asp-controller="Language" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>  Add New Language
+            </a>
+        </div>
+        <div class="row py-2">
+            <table class="table table-borderless table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>Language Name</th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.LanguageName</td>
+                            <td>
+                                <div class="btn btn-group float-end" role="group">
+                                    <a asp-controller="Language" asp-action="Edit" asp-route-id="@item.LanguageId" class="btn btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                                    <a asp-controller="Language" asp-action="Delete" asp-route-id="@item.LanguageId" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

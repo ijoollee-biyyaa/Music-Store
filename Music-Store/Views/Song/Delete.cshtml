@@ -1,0 +1,89 @@
+﻿@model SongTbl
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="border p-3 mt-4 mb-5 col-10">
+            <div class="row pb-2">
+                <h2 class=" text-primary">Delete Song</h2>
+                <hr />
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongName" class="p-0"></label>
+                <input asp-for="SongName" disabled class="form-control" />
+  
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongDescription" class="p-0"></label>
+                <input asp-for="SongDescription" disabled class="form-control" />
+               
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongRelease" class="p-0"></label>
+                <input asp-for="SongRelease" disabled class="form-control" />
+          
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="GenreId" class="p-0"></label>
+                <input asp-for="Genre.GenreName" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="AlbumId" class="p-0"></label>
+                <input asp-for="Album.AlbumTitle" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SingerId" class="p-0"></label>
+                <input asp-for="Singer.SingerName" class="form-control" disabled />
+            </div>
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="LanguageId" class="p-0"></label>
+                <input asp-for="Language.LanguageName" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongFilepath" class="p-0"></label>
+                <input asp-for="SongFilepath" class="form-control" disabled />
+
+            </div>
+          
+            <div class="mb-3 row p-1">
+                <input asp-for="SongId" hidden />
+                <label asp-for="SongPicture" class="p-0"></label>
+                <input asp-for="SongPicture" class="form-control" disabled />
+
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">Delete</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2">
+
+            <img src="@Model.SongPicture" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+            <div class="box-shadow ">
+                <audio controls> <source src="@Model.SongFilepath" /></audio>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+

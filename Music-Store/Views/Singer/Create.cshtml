@@ -1,0 +1,41 @@
+﻿@model SingerTbl
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4 offset-md-1">
+       
+        <div class="row pb-2">
+            <h2 class=" text-primary">Create Singer</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="SingerName" class="p-0"></label>
+            <input asp-for="SingerName" class="form-control" />
+            <span asp-validation-for="SingerName" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="SingerBio" class="p-0"></label>
+            <input asp-for="SingerBio" class="form-control" />
+            <span asp-validation-for="SingerBio" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="ProfilePicture" class="p-0"></label>
+            <input type="file" name="file"  />
+            <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-success form-control">Create</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Singer" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

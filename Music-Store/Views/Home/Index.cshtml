@@ -1,0 +1,103 @@
+﻿@model AlbumSongVm
+<link rel="stylesheet" href="css/swiper-bundle.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+
+<div class=" text-center bg-transparent">
+
+    <h2 class="text-body text-primary navbar-brand">Good Morning-Saamoo</h2>
+ </div>
+<div>
+
+    <h2 class=" text-warning" style="margin:15px;">Songs</h2>
+</div>
+
+
+<div class="slide-container swiper">
+    <div class="slide-content">
+
+        <div class="card-wrapper swiper-wrapper">
+            @foreach (var item in Model.Song)
+            {
+                <div class="card swiper-slide border-0 p-3 shadow border-top border-5 rounded">
+                    <div class=" image-content">
+                        <span class="overlay"></span>
+                        <div class="card-image">
+                            <img src="@item.SongPicture" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content swiper-slide">
+
+                        <h2 class="name">@item.SongName</h2>
+                        <p class="description">@item.Singer.SingerName</p>
+                        <audio class="button" controls >
+                            <source src="@item.SongFilepath" />
+                        </audio>
+
+                    </div>
+
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <div class="swiper-button-next swiper-navBtn"></div>
+    <div class="swiper-button-prev swiper-navBtn"></div>
+    <div class="swiper-pagination"></div>
+
+</div>
+
+<div>
+
+    <h2 class="text-warning" style="margin:15px;">Albums</h2>
+ </div>
+
+<div class="row pb-3">
+    @foreach (var music in Model.Album)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+
+                    <div class="card card-album border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@music.SongTbls.FirstOrDefault().SongPicture" class="card-img-top rounded" height="200" width="200" />
+
+                        <div class="pl-1">
+                            <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">
+                                @music.AlbumTitle
+                            </p>
+                            <p class="card-title text-warning text-center">Singer:<b>@music.SongTbls.FirstOrDefault().Singer.SingerName</b></p>
+                        </div>
+                          
+                        <div p-1>
+                            <a   class="btn btn-outline-secondary"  asp-controller="Album" asp-action="SongList" asp-route-id="@music.AlbumId">Detail</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/site.js"></script>
+   
+    <script>
+        $(document).ready(function () {
+            $("#term").autocomplete({
+                source: 'api/searchapi/search'
+            });
+        })
+    </script>
+
+    
+}
